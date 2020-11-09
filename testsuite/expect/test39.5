@@ -336,7 +336,8 @@ test_gpus_cnt "--gpus=1 --ntasks-per-socket=1 -c $cpus_per_node" 1 1
 test_gpus_cnt "-n1 --gpus-per-task=1 --ntasks-per-node=1 -c $cpus_per_node" 1 1
 test_gpus_cnt "-n1 --gpus-per-task=1 --ntasks-per-socket=1 -c $cpus_per_node" 1 1
 
-test_gpus_cnt "--sockets-per-node=$sockets_per_node --gpus-per-socket=1 --ntasks-per-core=1 -c 1" 1 1
+# Fatals slurmd w/out -n . Bug 10197
+test_gpus_cnt "--sockets-per-node=$sockets_per_node --gpus-per-socket=1 --ntasks-per-core=1 -c 1 -n$sockets_per_node" [expr $sockets_per_node * $sockets_per_node] $sockets_per_node
 test_gpus_cnt "--sockets-per-node=1 --gpus-per-socket=1 --ntasks-per-core=1 -c $cpus_per_socket" 1 1
 set target_gpus [expr min($sockets_per_node, $gpu_cnt)]
 test_gpus_cnt "--sockets-per-node=$sockets_per_node --gpus-per-socket=1 --ntasks-per-core=1 -c $cpus_per_node" $target_gpus $target_gpus
