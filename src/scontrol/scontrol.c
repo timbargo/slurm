@@ -1922,7 +1922,7 @@ scontrol [<OPTION>] [<COMMAND>]                                            \n\
 			      is all records.                              \n\
      shutdown <OPTS>          shutdown slurm daemons                       \n\
 			      (the primary controller will be stopped)     \n\
-     suspend <job_list>       susend specified job (see resume)            \n\
+     suspend <job_list>       suspend specified job (see resume)            \n\
      top <job_list>           Put specified job first in queue for user    \n\
      token [lifespan=] [username=] fetch an auth token                     \n\
      takeover                 ask slurm backup controller to take over     \n\
